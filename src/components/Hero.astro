@@ -1,0 +1,226 @@
+---
+import T from "./T.astro";
+
+const APP_URL = "https://barbershop-turnos.vercel.app/login";
+---
+
+<section class="relative overflow-hidden px-6 pt-28 pb-20 sm:pt-36 sm:pb-28">
+  <!-- A single soft emerald wash anchored to the headline, not a decorative blob field. -->
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute -top-40 left-1/2 h-[28rem] w-[52rem] -translate-x-1/2 rounded-full bg-emerald-500/8 blur-[120px]"
+  >
+  </div>
+
+  <div
+    class="relative mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20"
+  >
+    <!-- Copy -->
+    <div>
+      <p
+        data-reveal
+        class="text-eyebrow mb-6 text-[11px] font-semibold uppercase text-emerald-400"
+      >
+        <T
+          es="Para negocios de servicio en Puerto Rico"
+          en="For service businesses in Puerto Rico"
+        />
+      </p>
+
+      <h1
+        data-reveal
+        style="--reveal-delay: 60ms"
+        class="text-display text-4xl font-semibold text-white sm:text-5xl lg:text-[3.4rem]"
+      >
+        <T
+          es="Tus clientes reservan por WhatsApp.<br class='hidden sm:block' /> Tú solo abres el local."
+          en="Your clients book on WhatsApp.<br class='hidden sm:block' /> You just open up."
+        />
+      </h1>
+
+      <p
+        data-reveal
+        style="--reveal-delay: 120ms"
+        class="mt-6 max-w-xl text-lg leading-relaxed text-slate-400"
+      >
+        <T
+          es="AgendaOS contesta el WhatsApp de tu negocio, ofrece los horarios que tienes libres y confirma la cita. Sin apps que descargar, sin llamadas perdidas, sin libreta."
+          en="AgendaOS answers your business WhatsApp, offers the slots you actually have open, and confirms the appointment. No app to download, no missed calls, no paper book."
+        />
+      </p>
+
+      <div
+        data-reveal
+        style="--reveal-delay: 180ms"
+        class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
+      >
+        <a
+          href={APP_URL}
+          style="--pressable-shadow: 0 10px 28px -10px rgb(16 185 129 / 0.55)"
+          class="group pressable inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-6 py-3.5 text-[15px] font-semibold text-slate-950 shadow-lg shadow-emerald-500/20 hover:bg-emerald-400"
+        >
+          <T es="Crear mi cuenta" en="Create my account" />
+          <svg
+            class="h-4 w-4 transition-transform duration-200 ease-out group-hover:translate-x-0.5"
+            viewBox="0 0 16 16"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.75"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M3 8h10M9 4l4 4-4 4"></path>
+          </svg>
+        </a>
+
+        <a
+          href="#como-funciona"
+          class="pressable inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900 px-6 py-3.5 text-[15px] font-medium text-slate-200 hover:border-slate-700 hover:text-white"
+        >
+          <T es="Ver cómo funciona" en="See how it works" />
+        </a>
+      </div>
+
+      <p data-reveal style="--reveal-delay: 240ms" class="mt-5 text-sm text-slate-500">
+        <T
+          es="Entras con tu correo. No hay contraseña que recordar."
+          en="Sign in with your email. No password to remember."
+        />
+      </p>
+    </div>
+
+    <!-- Product: the actual booking conversation, not an abstract graphic -->
+    <div data-reveal style="--reveal-delay: 200ms" class="relative">
+      <div
+        class="mx-auto w-full max-w-sm rounded-3xl border border-slate-800 bg-slate-900 p-1.5 shadow-2xl shadow-black/50"
+      >
+        <!-- Chat header -->
+        <div
+          class="flex items-center gap-3 rounded-t-[1.1rem] border-b border-slate-800 bg-slate-950/60 px-4 py-3.5"
+        >
+          <span
+            class="wa-pulse flex h-9 w-9 items-center justify-center rounded-full bg-emerald-500 text-slate-950"
+          >
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.13-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.53.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.71-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.84-.2-.48-.4-.42-.55-.43h-.47c-.16 0-.43.06-.65.31-.23.24-.86.84-.86 2.05s.88 2.38 1 2.54c.13.17 1.73 2.64 4.19 3.7.58.26 1.04.41 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29Z"
+              ></path>
+            </svg>
+          </span>
+          <div class="min-w-0">
+            <p class="truncate text-sm font-semibold text-white">Barbería El Corte</p>
+            <p class="text-xs text-emerald-400">
+              <T es="en línea" en="online" />
+            </p>
+          </div>
+        </div>
+
+        <!-- Messages -->
+        <div class="space-y-2.5 px-3.5 py-5">
+          <div class="flex justify-end">
+            <p
+              class="max-w-[80%] rounded-2xl rounded-br-md bg-emerald-500 px-3.5 py-2.5 text-[13.5px] leading-snug text-slate-950"
+            >
+              <T es="Hola, quiero un corte" en="Hey, I want a haircut" />
+            </p>
+          </div>
+
+          <div class="flex justify-start">
+            <p
+              class="max-w-[85%] rounded-2xl rounded-bl-md bg-slate-800 px-3.5 py-2.5 text-[13.5px] leading-snug text-slate-200"
+            >
+              <T
+                es="¡Claro! ¿Qué servicio buscas?<br />1. Corte — $20<br />2. Corte + barba — $30<br />3. Barba — $15"
+                en="Sure! Which service?<br />1. Haircut — $20<br />2. Haircut + beard — $30<br />3. Beard — $15"
+              />
+            </p>
+          </div>
+
+          <div class="flex justify-end">
+            <p
+              class="max-w-[80%] rounded-2xl rounded-br-md bg-emerald-500 px-3.5 py-2.5 text-[13.5px] leading-snug text-slate-950"
+            >
+              2
+            </p>
+          </div>
+
+          <div class="flex justify-start">
+            <p
+              class="max-w-[85%] rounded-2xl rounded-bl-md bg-slate-800 px-3.5 py-2.5 text-[13.5px] leading-snug text-slate-200"
+            >
+              <T
+                es="Con Luis el jueves quedan: 10:30 am, 1:00 pm, 4:30 pm"
+                en="With Luis on Thursday: 10:30 am, 1:00 pm, 4:30 pm"
+              />
+            </p>
+          </div>
+
+          <div class="flex justify-end">
+            <p
+              class="max-w-[80%] rounded-2xl rounded-br-md bg-emerald-500 px-3.5 py-2.5 text-[13.5px] leading-snug text-slate-950"
+            >
+              1:00 pm
+            </p>
+          </div>
+
+          <!--
+            The typing indicator resolves: three bobs, then the confirmation
+            takes its place. Both share one grid cell so nothing jumps.
+          -->
+          <div class="chat-reply">
+            <div
+              class="chat-typing flex items-center gap-1.5 rounded-2xl rounded-bl-md bg-slate-800 px-4 py-3.5"
+              aria-hidden="true"
+            >
+              <span class="dot-bob h-1.5 w-1.5 rounded-full bg-slate-400"></span>
+              <span class="dot-bob h-1.5 w-1.5 rounded-full bg-slate-400" style="animation-delay: 150ms"
+              ></span>
+              <span class="dot-bob h-1.5 w-1.5 rounded-full bg-slate-400" style="animation-delay: 300ms"
+              ></span>
+            </div>
+
+            <p
+              class="chat-confirm max-w-[85%] rounded-2xl rounded-bl-md bg-slate-800 px-3.5 py-2.5 text-[13.5px] leading-snug text-slate-200"
+            >
+              <T
+                es="¡Listo! Cita confirmada: jueves 1:00 pm con Luis 💈"
+                en="All set! Booked: Thursday 1:00 pm with Luis 💈"
+              />
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- What the owner sees on the other side -->
+      <div
+        class="mx-auto mt-4 flex max-w-sm items-center gap-3 rounded-2xl border border-slate-800 bg-slate-900 px-4 py-3"
+      >
+        <span
+          class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-emerald-500/12 text-emerald-400"
+        >
+          <svg
+            class="h-4 w-4"
+            viewBox="0 0 16 16"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.75"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M3 6.5h10M5 2v2M11 2v2M3 4h10a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z"
+            ></path>
+            <path d="m6 10 1.5 1.5L10.5 8.5"></path>
+          </svg>
+        </span>
+        <p class="text-[13px] leading-snug text-slate-400">
+          <T
+            es="La cita ya está en tu agenda. <span class='text-slate-200'>Jueves 1:00 pm — Luis</span>"
+            en="The appointment is already on your calendar. <span class='text-slate-200'>Thursday 1:00 pm — Luis</span>"
+          />
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

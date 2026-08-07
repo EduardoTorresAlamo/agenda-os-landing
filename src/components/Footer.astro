@@ -1,0 +1,114 @@
+---
+import T from "./T.astro";
+
+const APP_URL = "https://barbershop-turnos.vercel.app/login";
+const CONTACT_EMAIL = "hola@agendaos.com";
+const year = new Date().getFullYear();
+
+const nav = [
+  { href: "#funciones", es: "Funciones", en: "Features" },
+  { href: "#como-funciona", es: "Cómo funciona", en: "How it works" },
+  { href: "#precios", es: "Precios", en: "Pricing" },
+];
+---
+
+<footer class="border-t border-slate-900 px-6 py-16">
+  <div class="mx-auto max-w-6xl">
+    <!-- Closing CTA -->
+    <div
+      data-reveal
+      class="flex flex-col gap-6 rounded-2xl border border-slate-800 bg-slate-900 p-8 sm:flex-row sm:items-center sm:justify-between sm:p-10"
+    >
+      <div>
+        <h2 class="text-heading text-2xl font-semibold text-white">
+          <T
+            es="Deja de contestar el WhatsApp a las 11 pm"
+            en="Stop answering WhatsApp at 11 pm"
+          />
+        </h2>
+        <p class="mt-2 text-[15px] text-slate-400">
+          <T
+            es="Crea tu cuenta con el correo y monta el negocio en un rato."
+            en="Create your account with an email and set your shop up in one sitting."
+          />
+        </p>
+      </div>
+
+      <a
+        href={APP_URL}
+        class="pressable inline-flex shrink-0 items-center justify-center rounded-xl bg-emerald-500 px-6 py-3.5 text-[15px] font-semibold text-slate-950 shadow-lg shadow-emerald-500/20 hover:bg-emerald-400"
+      >
+        <T es="Crear mi cuenta" en="Create my account" />
+      </a>
+    </div>
+
+    <!-- Meta -->
+    <div
+      class="mt-14 flex flex-col gap-8 border-t border-slate-900 pt-10 sm:flex-row sm:items-start sm:justify-between"
+    >
+      <div>
+        <a href="#top" class="inline-flex items-center gap-2.5">
+          <span
+            class="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-500 text-slate-950"
+          >
+            <svg
+              class="h-4 w-4"
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.9"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M2.5 5.5h11M5.5 2v2M10.5 2v2"></path>
+              <rect x="2.5" y="3.5" width="11" height="10" rx="1.5"></rect>
+              <path d="m6 9.5 1.5 1.5 3-3"></path>
+            </svg>
+          </span>
+          <span class="text-[15px] font-semibold tracking-tight text-white">AgendaOS</span>
+        </a>
+
+        <p class="mt-4 max-w-xs text-sm leading-relaxed text-slate-500">
+          <T
+            es="Reservas por WhatsApp para negocios de servicio en Puerto Rico."
+            en="WhatsApp booking for service businesses in Puerto Rico."
+          />
+        </p>
+      </div>
+
+      <nav aria-label="Footer" class="flex flex-wrap gap-x-8 gap-y-3">
+        {
+          nav.map((item) => (
+            <a
+              href={item.href}
+              class="text-sm text-slate-400 transition-colors duration-150 hover:text-white"
+            >
+              <T es={item.es} en={item.en} />
+            </a>
+          ))
+        }
+        <a
+          href={`mailto:${CONTACT_EMAIL}`}
+          class="text-sm text-slate-400 transition-colors duration-150 hover:text-white"
+        >
+          <T es="Contacto" en="Contact" />
+        </a>
+      </nav>
+    </div>
+
+    <div
+      class="mt-10 flex flex-col gap-3 border-t border-slate-900 pt-8 sm:flex-row sm:items-center sm:justify-between"
+    >
+      <p class="text-xs text-slate-600">
+        © {year} AgendaOS. <T es="Hecho en Puerto Rico." en="Made in Puerto Rico." />
+      </p>
+      <p class="text-xs text-slate-600">
+        <T
+          es="WhatsApp es una marca de Meta Platforms, Inc. AgendaOS no está afiliado a Meta."
+          en="WhatsApp is a trademark of Meta Platforms, Inc. AgendaOS is not affiliated with Meta."
+        />
+      </p>
+    </div>
+  </div>
+</footer>

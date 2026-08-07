@@ -1,0 +1,111 @@
+---
+import T from "./T.astro";
+
+/**
+ * Every card describes something the product actually does today
+ * (bot flow, human takeover, dashboard, services, clients, staff).
+ */
+const features = [
+  {
+    icon: "chat",
+    es: { title: "Reservas 24/7 por WhatsApp", body: "El bot guía al cliente: servicio, profesional, día y hora. Confirma y cierra. También a las 11 pm y los domingos." },
+    en: { title: "24/7 booking over WhatsApp", body: "The bot walks the client through service, staff member, day and time, then confirms. Works at 11 pm and on Sundays too." },
+  },
+  {
+    icon: "hand",
+    es: { title: "Tomas el control cuando quieras", body: "Un botón pausa el bot en esa conversación y contestas tú. Cuando terminas, el bot sigue donde lo dejaste." },
+    en: { title: "Take over whenever you want", body: "One button pauses the bot for that conversation so you can reply yourself. When you're done, the bot picks up again." },
+  },
+  {
+    icon: "calendar",
+    es: { title: "Tu día en una pantalla", body: "Las citas de hoy, ordenadas por hora, con estado: pendiente, confirmada, completada, cancelada o no llegó." },
+    en: { title: "Your day on one screen", body: "Today's appointments in order, with status: pending, confirmed, completed, cancelled, or no-show." },
+  },
+  {
+    icon: "tag",
+    es: { title: "Servicios con precio y duración", body: "Defines cuánto dura y cuánto cuesta cada servicio. El bot calcula los espacios libres reales a partir de eso." },
+    en: { title: "Services with price and duration", body: "Set how long each service takes and what it costs. The bot derives real open slots from that." },
+  },
+  {
+    icon: "users",
+    es: { title: "Clientes sin escribir nada", body: "Cada persona que reserva queda guardada con su número y su historial. No hay que teclear una libreta de contactos." },
+    en: { title: "A client list that builds itself", body: "Everyone who books is saved with their number and history. No contact book to type up." },
+  },
+  {
+    icon: "team",
+    es: { title: "Tu equipo y tus horarios", body: "Añade o desactiva profesionales. Cada uno tiene su propia agenda, y el bot sólo ofrece lo que está libre." },
+    en: { title: "Your team, your hours", body: "Add or deactivate staff. Each one has their own calendar, and the bot only offers what's actually free." },
+  },
+];
+
+const paths: Record<string, string> = {
+  chat: "M4 4h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9l-5 4V5a1 1 0 0 1 1-1Z",
+  hand: "M9 11V5.5a1.5 1.5 0 0 1 3 0V11m0-1.5a1.5 1.5 0 0 1 3 0V12m0-1a1.5 1.5 0 0 1 3 0v4a5 5 0 0 1-5 5h-1.5a5 5 0 0 1-4.2-2.3L5 14.5a1.6 1.6 0 0 1 2.6-1.8L9 14.5",
+  calendar: "M3 8h18M8 3v3m8-3v3M5 6h14a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Zm3.5 9 2 2 4-4",
+  tag: "M3 3h7l11 11-7 7L3 10V3Zm4 4h.01",
+  users: "M16 20v-1.5a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4V20M9 10.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7ZM22 20v-1.5a4 4 0 0 0-3-3.87M16 3.6a4 4 0 0 1 0 7.75",
+  team: "M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-8 9a8 8 0 0 1 16 0",
+};
+---
+
+<section id="funciones" class="border-t border-slate-900 px-6 py-24 sm:py-32">
+  <div class="mx-auto max-w-6xl">
+    <div class="max-w-2xl">
+      <p data-reveal class="text-eyebrow mb-5 text-[11px] font-semibold uppercase text-emerald-400">
+        <T es="Lo que hace" en="What it does" />
+      </p>
+      <h2
+        data-reveal
+        style="--reveal-delay: 60ms"
+        class="text-heading text-3xl font-semibold text-white sm:text-4xl"
+      >
+        <T
+          es="Seis cosas que dejas de hacer a mano"
+          en="Six things you stop doing by hand"
+        />
+      </h2>
+      <p data-reveal style="--reveal-delay: 110ms" class="mt-5 text-lg leading-relaxed text-slate-400">
+        <T
+          es="No es un calendario más. Es el WhatsApp que ya usas, contestando solo, escribiendo en tu agenda."
+          en="It isn't one more calendar. It's the WhatsApp you already use, answering on its own and writing to your calendar."
+        />
+      </p>
+    </div>
+
+    <!-- Stagger restarts every row (i % 3) so the second row doesn't inherit
+         delays the first one already spent. -->
+    <div class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        features.map((f, i) => (
+          <article
+            data-reveal
+            style={`--reveal-delay: ${(i % 3) * 60}ms`}
+            class="group rounded-2xl border border-slate-800 bg-slate-900 p-6 transition-colors duration-200 hover:border-slate-700"
+          >
+            <span class="mb-5 flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400 ring-1 ring-emerald-500/15 transition duration-200 ease-out group-hover:bg-emerald-500/15 group-hover:text-emerald-300 group-hover:ring-emerald-500/30">
+              <svg
+                class="h-[18px] w-[18px] transition-transform duration-200 ease-out group-hover:scale-110"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d={paths[f.icon]} />
+              </svg>
+            </span>
+
+            <h3 class="text-heading text-[17px] font-semibold text-white">
+              <T es={f.es.title} en={f.en.title} />
+            </h3>
+            <p class="mt-2.5 text-[15px] leading-relaxed text-slate-400">
+              <T es={f.es.body} en={f.en.body} />
+            </p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,205 @@
+---
+import T from "./T.astro";
+
+const APP_URL = "https://barbershop-turnos.vercel.app/login";
+const CONTACT_EMAIL = "hola@agendaos.com";
+
+/**
+ * NOTE: the product has no billing implemented yet — these tiers are a
+ * placeholder structure. Update prices and limits before going live.
+ */
+const plans = [
+  {
+    featured: false,
+    price: "$29",
+    es: {
+      name: "Solo",
+      for: "Un profesional",
+      features: [
+        "1 profesional",
+        "Reservas ilimitadas por WhatsApp",
+        "Agenda, clientes y servicios",
+        "Bandeja de WhatsApp con control manual",
+      ],
+      cta: "Empezar",
+    },
+    en: {
+      name: "Solo",
+      for: "One professional",
+      features: [
+        "1 staff member",
+        "Unlimited WhatsApp bookings",
+        "Calendar, clients and services",
+        "WhatsApp inbox with manual takeover",
+      ],
+      cta: "Get started",
+    },
+  },
+  {
+    featured: true,
+    price: "$59",
+    es: {
+      name: "Equipo",
+      for: "Locales con varios profesionales",
+      features: [
+        "Hasta 10 profesionales",
+        "Agenda independiente por profesional",
+        "Todo lo del plan Solo",
+        "Soporte por WhatsApp",
+      ],
+      cta: "Empezar",
+    },
+    en: {
+      name: "Team",
+      for: "Shops with several professionals",
+      features: [
+        "Up to 10 staff members",
+        "A separate calendar per person",
+        "Everything in Solo",
+        "Support over WhatsApp",
+      ],
+      cta: "Get started",
+    },
+  },
+  {
+    featured: false,
+    price: null,
+    es: {
+      name: "Varios locales",
+      for: "Más de una sucursal",
+      features: [
+        "Profesionales sin límite",
+        "Un negocio por sucursal",
+        "Configuración acompañada",
+        "Facturación única",
+      ],
+      cta: "Hablemos",
+    },
+    en: {
+      name: "Multi-location",
+      for: "More than one location",
+      features: [
+        "Unlimited staff",
+        "One business per location",
+        "Guided setup",
+        "Single invoice",
+      ],
+      cta: "Talk to us",
+    },
+  },
+];
+---
+
+<section id="precios" class="border-t border-slate-900 px-6 py-24 sm:py-32">
+  <div class="mx-auto max-w-6xl">
+    <div class="max-w-2xl">
+      <p data-reveal class="text-eyebrow mb-5 text-[11px] font-semibold uppercase text-emerald-400">
+        <T es="Precios" en="Pricing" />
+      </p>
+      <h2
+        data-reveal
+        style="--reveal-delay: 60ms"
+        class="text-heading text-3xl font-semibold text-white sm:text-4xl"
+      >
+        <T es="Menos de lo que cobras por dos cortes" en="Less than you charge for two haircuts" />
+      </h2>
+      <p data-reveal style="--reveal-delay: 110ms" class="mt-5 text-lg leading-relaxed text-slate-400">
+        <T
+          es="Precio fijo al mes, en dólares. Sin comisión por cita, sin permanencia."
+          en="Flat monthly price in USD. No fee per booking, no contract."
+        />
+      </p>
+    </div>
+
+    <!-- The featured plan lands first (delay 0); the others arrive around it.
+         Whatever moves first is what the eye reads as the recommendation. -->
+    <div class="mt-14 grid items-start gap-4 lg:grid-cols-3">
+      {
+        plans.map((p, i) => (
+          <div
+            data-reveal
+            style={`--reveal-delay: ${p.featured ? 0 : (i + 1) * 70}ms`}
+            class:list={[
+              "relative rounded-2xl border p-7",
+              p.featured
+                ? "border-emerald-500/30 bg-slate-900 ring-1 ring-emerald-500/15"
+                : "border-slate-800 bg-slate-900",
+            ]}
+          >
+            {p.featured && (
+              <span class="absolute -top-3 left-7 rounded-full bg-emerald-500 px-3 py-1 text-[11px] font-semibold text-slate-950">
+                <T es="Más elegido" en="Most picked" />
+              </span>
+            )}
+
+            <h3 class="text-heading text-[17px] font-semibold text-white">
+              <T es={p.es.name} en={p.en.name} />
+            </h3>
+            <p class="mt-1 text-sm text-slate-400">
+              <T es={p.es.for} en={p.en.for} />
+            </p>
+
+            <p class="mt-7 flex items-baseline gap-1.5">
+              {p.price ? (
+                <>
+                  <span class="text-display text-4xl font-semibold text-white tabular-nums">
+                    {p.price}
+                  </span>
+                  <span class="text-sm text-slate-500">
+                    <T es="/ mes" en="/ month" />
+                  </span>
+                </>
+              ) : (
+                <span class="text-display text-4xl font-semibold text-white">
+                  <T es="A medida" en="Custom" />
+                </span>
+              )}
+            </p>
+
+            <a
+              href={p.price ? APP_URL : `mailto:${CONTACT_EMAIL}`}
+              style={p.featured ? "--pressable-shadow: 0 10px 28px -10px rgb(16 185 129 / 0.55)" : undefined}
+              class:list={[
+                "pressable mt-7 flex w-full items-center justify-center rounded-xl px-5 py-3 text-[15px] font-semibold",
+                p.featured
+                  ? "bg-emerald-500 text-slate-950 shadow-lg shadow-emerald-500/20 hover:bg-emerald-400"
+                  : "border border-slate-800 bg-slate-950 text-slate-200 hover:border-slate-700 hover:text-white",
+              ]}
+            >
+              <T es={p.es.cta} en={p.en.cta} />
+            </a>
+
+            <ul class="mt-7 space-y-3 border-t border-slate-800 pt-7">
+              {p.es.features.map((_, fi) => (
+                <li class="flex gap-2.5 text-[15px] leading-snug text-slate-400">
+                  <svg
+                    class="mt-1 h-3.5 w-3.5 shrink-0 text-emerald-400"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="m3 8.5 3.5 3.5L13 5" />
+                  </svg>
+                  <span>
+                    <T es={p.es.features[fi]} en={p.en.features[fi]} />
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+
+    <p data-reveal class="mt-8 text-sm text-slate-500">
+      <T
+        es="El coste de los mensajes de WhatsApp Business lo factura Meta directamente a tu cuenta."
+        en="WhatsApp Business message costs are billed by Meta directly to your account."
+      />
+    </p>
+  </div>
+</section>

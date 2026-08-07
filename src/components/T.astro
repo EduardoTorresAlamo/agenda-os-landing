@@ -1,0 +1,19 @@
+---
+/**
+ * Bilingual text node.
+ *
+ * Renders both languages; global.css hides the one that doesn't match
+ * <html data-lang>. Keeps the page static, indexable in both languages, and
+ * correct before any JS runs.
+ *
+ * Both props accept inline markup (<em>, <br>, <span>).
+ */
+interface Props {
+  es: string;
+  en: string;
+}
+
+const { es, en } = Astro.props;
+---
+
+<span class="i18n"><span data-l="es" set:html={es} /><span data-l="en" set:html={en} /></span>
